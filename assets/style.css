@@ -1,0 +1,324 @@
+/* =====================================================
+   CARDIOIQ — GLOBAL DESIGN SYSTEM
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --navy: #10283D;
+    --navy-light: #193B55;
+    --teal: #16877D;
+    --teal-light: #E6F4F1;
+    --background: #F4F7FA;
+    --surface: #FFFFFF;
+    --text: #172B45;
+    --muted: #718096;
+    --border: #E5EAF0;
+    --green: #16845B;
+    --orange: #C98220;
+    --red: #C94C4C;
+}
+
+/* Main application */
+
+.stApp {
+    background: var(--background);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+}
+
+[data-testid="stHeader"] {
+    background: transparent;
+}
+
+.main .block-container {
+    max-width: 1450px;
+    padding: 2rem 2.5rem 3rem;
+}
+
+/* Typography */
+
+h1, h2, h3, h4 {
+    color: var(--text) !important;
+    font-family: 'DM Sans', sans-serif !important;
+    letter-spacing: -0.5px;
+}
+
+h1 {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+}
+
+h2 {
+    font-size: 1.45rem !important;
+    font-weight: 700 !important;
+}
+
+h3 {
+    font-size: 1.12rem !important;
+    font-weight: 700 !important;
+}
+
+p, label, span, div {
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* Sidebar */
+
+[data-testid="stSidebar"] {
+    background: var(--navy);
+    border-right: 1px solid #1E4058;
+}
+
+[data-testid="stSidebar"] * {
+    color: #EAF1F7 !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+    color: #B9C9D6 !important;
+}
+
+[data-testid="stSidebar"] button {
+    border-radius: 9px;
+}
+
+/* Sidebar navigation */
+
+[data-testid="stSidebarNav"] {
+    padding-top: 1rem;
+}
+
+[data-testid="stSidebarNav"] a {
+    border-radius: 9px;
+    margin: 3px 0;
+}
+
+/* Metric cards */
+
+[data-testid="stMetric"] {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 17px 19px;
+    box-shadow: 0 2px 8px rgba(16, 40, 61, 0.035);
+}
+
+[data-testid="stMetricLabel"] {
+    color: var(--muted) !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: var(--navy) !important;
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+}
+
+/* Buttons */
+
+.stButton > button,
+.stFormSubmitButton > button {
+    border-radius: 9px;
+    font-weight: 600;
+    min-height: 2.5rem;
+    transition: all 0.2s ease;
+}
+
+.stButton > button[kind="primary"],
+.stFormSubmitButton > button[kind="primary"] {
+    background: var(--teal);
+    border: 1px solid var(--teal);
+    color: white;
+}
+
+.stButton > button[kind="primary"]:hover,
+.stFormSubmitButton > button[kind="primary"]:hover {
+    background: #116D65;
+    border-color: #116D65;
+}
+
+/* Inputs */
+
+.stTextInput input,
+.stNumberInput input,
+.stDateInput input,
+.stTextArea textarea,
+.stSelectbox [data-baseweb="select"],
+.stMultiSelect [data-baseweb="select"] {
+    border-radius: 9px !important;
+}
+
+[data-testid="stTextInput"] label,
+[data-testid="stNumberInput"] label,
+[data-testid="stSelectbox"] label {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Tabs */
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: var(--muted);
+    font-weight: 600;
+    padding: 12px 16px;
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--teal) !important;
+    border-bottom-color: var(--teal) !important;
+}
+
+/* Tables */
+
+[data-testid="stDataFrame"] {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Expanders */
+
+[data-testid="stExpander"] {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+/* Alerts and messages */
+
+[data-testid="stAlert"] {
+    border-radius: 10px;
+}
+
+/* Dividers */
+
+hr {
+    border-color: var(--border);
+}
+
+/* Custom reusable UI elements */
+
+.ciq-brand {
+    color: white;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.ciq-muted {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.ciq-eyebrow {
+    color: var(--teal);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+}
+
+.ciq-hero {
+    background: linear-gradient(120deg, #10283D 0%, #174B5B 65%, #16877D 100%);
+    padding: 2.5rem;
+    border-radius: 18px;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.ciq-hero h1 {
+    color: white !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 0.5rem;
+}
+
+.ciq-hero p {
+    color: #D8E8EC;
+    font-size: 1.05rem;
+    max-width: 700px;
+}
+
+.ciq-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(16, 40, 61, 0.035);
+}
+
+.ciq-card h3 {
+    margin-top: 0;
+    color: var(--navy) !important;
+}
+
+.ciq-card p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.ciq-section-label {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.ciq-risk-high {
+    color: var(--red);
+    background: #FCECEC;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: 700;
+}
+
+.ciq-risk-moderate {
+    color: var(--orange);
+    background: #FFF4E3;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: 700;
+}
+
+.ciq-risk-low {
+    color: var(--green);
+    background: #E8F5EE;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: 700;
+}
+
+/* Login page */
+
+.ciq-login-wrap {
+    max-width: 520px;
+    margin: 2rem auto;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(16, 40, 61, 0.07);
+}
+
+@media (max-width: 768px) {
+    .main .block-container {
+        padding: 1.2rem 1rem 2rem;
+    }
+
+    .ciq-hero {
+        padding: 1.5rem;
+    }
+
+    .ciq-hero h1 {
+        font-size: 2rem !important;
+    }
+}
