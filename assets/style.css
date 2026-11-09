@@ -1,324 +1,364 @@
-/* =====================================================
-   CARDIOIQ — GLOBAL DESIGN SYSTEM
-   ===================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
-
+/* ---------- Global ---------- */
 :root {
-    --navy: #10283D;
-    --navy-light: #193B55;
-    --teal: #16877D;
-    --teal-light: #E6F4F1;
-    --background: #F4F7FA;
-    --surface: #FFFFFF;
-    --text: #172B45;
+    --navy: #142C43;
+    --teal: #087F8C;
+    --bg: #F4F7FA;
+    --text: #1C2E40;
     --muted: #718096;
     --border: #E5EAF0;
-    --green: #16845B;
-    --orange: #C98220;
-    --red: #C94C4C;
 }
-
-/* Main application */
 
 .stApp {
-    background: var(--background);
-    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
     color: var(--text);
+    font-family: "Inter", "Segoe UI", sans-serif;
 }
 
-[data-testid="stHeader"] {
-    background: transparent;
+/* ---------- Main page spacing ---------- */
+.stMainBlockContainer {
+    max-width: 1500px;
+    padding-top: 2rem !important;
+    padding-bottom: 1.5rem !important;
 }
 
-.main .block-container {
-    max-width: 1450px;
-    padding: 2rem 2.5rem 3rem;
-}
-
-/* Typography */
-
-h1, h2, h3, h4 {
-    color: var(--text) !important;
-    font-family: 'DM Sans', sans-serif !important;
-    letter-spacing: -0.5px;
-}
-
+/* ---------- Page headings ---------- */
 h1 {
-    font-size: 2rem !important;
-    font-weight: 800 !important;
-}
-
-h2 {
-    font-size: 1.45rem !important;
+    font-size: 1.8rem !important;
     font-weight: 700 !important;
+    color: var(--navy) !important;
+    line-height: 1.4 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
 }
 
-h3 {
-    font-size: 1.12rem !important;
-    font-weight: 700 !important;
-}
-
-p, label, span, div {
-    font-family: 'DM Sans', sans-serif;
-}
-
-/* Sidebar */
-
+/* ---------- Sidebar ---------- */
 [data-testid="stSidebar"] {
     background: var(--navy);
-    border-right: 1px solid #1E4058;
 }
 
 [data-testid="stSidebar"] * {
-    color: #EAF1F7 !important;
+    color: #F4F8FC;
 }
 
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
-    color: #B9C9D6 !important;
+[data-testid="stSidebar"] [data-testid="stPageLink"] {
+    border-radius: 8px;
 }
 
-[data-testid="stSidebar"] button {
-    border-radius: 9px;
+/* ---------- Headings ---------- */
+h1 {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    color: var(--navy) !important;
 }
 
-/* Sidebar navigation */
-
-[data-testid="stSidebarNav"] {
-    padding-top: 1rem;
+h2, h3 {
+    color: var(--navy) !important;
+    font-weight: 650 !important;
 }
 
-[data-testid="stSidebarNav"] a {
-    border-radius: 9px;
-    margin: 3px 0;
-}
-
-/* Metric cards */
-
+/* ---------- Metric cards ---------- */
 [data-testid="stMetric"] {
-    background: var(--surface);
+    background: white;
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 17px 19px;
-    box-shadow: 0 2px 8px rgba(16, 40, 61, 0.035);
+    border-radius: 12px;
+    padding: 14px 16px;
+    min-height: 105px;
+    box-shadow: 0 2px 8px rgba(20, 44, 67, 0.035);
 }
 
 [data-testid="stMetricLabel"] {
     color: var(--muted) !important;
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
+    font-size: 0.82rem !important;
 }
 
 [data-testid="stMetricValue"] {
     color: var(--navy) !important;
-    font-size: 1.8rem !important;
-    font-weight: 800 !important;
+    font-size: 1.55rem !important;
+    font-weight: 700 !important;
 }
 
-/* Buttons */
+/* ---------- Containers and tabs ---------- */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    border-color: var(--border);
+    border-radius: 12px;
+    background: white;
+}
 
+button[data-baseweb="tab"] {
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--teal);
+}
+
+/* ---------- Inputs ---------- */
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input,
+[data-testid="stSelectbox"] > div,
+[data-testid="stMultiSelect"] > div {
+    border-radius: 8px;
+}
+
+/* ---------- Buttons ---------- */
 .stButton > button,
 .stFormSubmitButton > button {
-    border-radius: 9px;
+    border-radius: 8px;
     font-weight: 600;
-    min-height: 2.5rem;
-    transition: all 0.2s ease;
+    min-height: 38px;
 }
 
-.stButton > button[kind="primary"],
-.stFormSubmitButton > button[kind="primary"] {
-    background: var(--teal);
-    border: 1px solid var(--teal);
-    color: white;
-}
-
-.stButton > button[kind="primary"]:hover,
-.stFormSubmitButton > button[kind="primary"]:hover {
-    background: #116D65;
-    border-color: #116D65;
-}
-
-/* Inputs */
-
-.stTextInput input,
-.stNumberInput input,
-.stDateInput input,
-.stTextArea textarea,
-.stSelectbox [data-baseweb="select"],
-.stMultiSelect [data-baseweb="select"] {
-    border-radius: 9px !important;
-}
-
-[data-testid="stTextInput"] label,
-[data-testid="stNumberInput"] label,
-[data-testid="stSelectbox"] label {
-    color: var(--text);
-    font-weight: 600;
-}
-
-/* Tabs */
-
-.stTabs [data-baseweb="tab-list"] {
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-}
-
-.stTabs [data-baseweb="tab"] {
-    color: var(--muted);
-    font-weight: 600;
-    padding: 12px 16px;
-}
-
-.stTabs [aria-selected="true"] {
-    color: var(--teal) !important;
-    border-bottom-color: var(--teal) !important;
-}
-
-/* Tables */
-
+/* ---------- Tables ---------- */
 [data-testid="stDataFrame"] {
-    background: white;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
-/* Expanders */
-
-[data-testid="stExpander"] {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
+/* ---------- Reduce excess spacing ---------- */
+[data-testid="stVerticalBlock"] {
+    gap: 0.8rem;
 }
-
-/* Alerts and messages */
-
-[data-testid="stAlert"] {
-    border-radius: 10px;
-}
-
-/* Dividers */
 
 hr {
     border-color: var(--border);
 }
 
-/* Custom reusable UI elements */
 
-.ciq-brand {
+/* =====================================
+   GLOBAL COMPACT UI - CARDIOIQ
+===================================== */
+
+/* Reduce page spacing */
+.block-container {
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.5rem !important;
+    max-width: 1500px;
+}
+
+/* Reduce spacing between elements */
+[data-testid="stVerticalBlock"] {
+    gap: 0.5rem !important;
+}
+
+/* Metric cards */
+[data-testid="stMetric"] {
+    padding: 8px 12px !important;
+    min-height: 75px !important;
+    border-radius: 9px !important;
+}
+
+/* Reduce metric number size */
+[data-testid="stMetricValue"] {
+    font-size: 1.35rem !important;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 0.78rem !important;
+}
+
+/* General bordered cards and containers */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    padding: 0.65rem !important;
+    border-radius: 9px !important;
+}
+
+/* Reduce container spacing */
+[data-testid="stHorizontalBlock"] {
+    gap: 0.7rem !important;
+}
+
+/* Reduce heading sizes */
+h1 {
+    font-size: 1.7rem !important;
+}
+
+h2 {
+    font-size: 1.4rem !important;
+}
+
+h3 {
+    font-size: 1.1rem !important;
+}
+
+/* Compact buttons */
+.stButton > button,
+.stFormSubmitButton > button {
+    min-height: 32px !important;
+    padding: 4px 12px !important;
+    font-size: 0.85rem !important;
+}
+
+/* Compact input fields */
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input {
+    min-height: 35px !important;
+    font-size: 0.85rem !important;
+}
+
+/* Compact tabs */
+button[data-baseweb="tab"] {
+    padding: 7px 12px !important;
+    font-size: 0.85rem !important;
+}
+
+/* Compact tables */
+[data-testid="stDataFrame"] {
+    border-radius: 8px;
+}
+
+/* Reduce divider spacing */
+hr {
+    margin: 0.5rem 0 !important;
+}
+
+/* ---------- Fix Login Page Layout ---------- */
+
+/* Restore proper top spacing */
+.block-container {
+    padding-top: 2.5rem !important;
+    padding-bottom: 1rem !important;
+}
+
+/* Prevent page title clipping */
+h1 {
+    margin-top: 0.5rem !important;
+    padding-top: 0.3rem !important;
+    line-height: 1.3 !important;
+}
+
+/* Login page form alignment */
+[data-testid="stForm"] {
+    max-width: 500px;
+    margin: 10px auto 0 auto;
+    padding: 18px 20px !important;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #DCE5EB;
+}
+
+/* Compact input fields */
+[data-testid="stTextInput"] {
+    margin-bottom: 8px !important;
+}
+
+[data-testid="stTextInput"] input {
+    min-height: 42px !important;
+}
+
+/* Login button */
+[data-testid="stFormSubmitButton"] button {
+    width: 100%;
+    min-height: 42px;
+    background-color: #087F8C;
     color: white;
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
-.ciq-muted {
-    color: var(--muted);
-    font-size: 0.88rem;
+/* Demo credentials */
+[data-testid="stCaptionContainer"] {
+    margin-top: 8px;
 }
 
-.ciq-eyebrow {
-    color: var(--teal);
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.3px;
+/* =====================================
+   FIX PAGE HEADING VISIBILITY
+===================================== */
+
+/* ---------- Main page spacing fix ---------- */
+
+.block-container,
+[data-testid="stMainBlockContainer"] {
+    max-width: 1500px !important;
+    padding-top: 4rem !important;
+    padding-bottom: 1rem !important;
 }
 
-.ciq-hero {
-    background: linear-gradient(120deg, #10283D 0%, #174B5B 65%, #16877D 100%);
-    padding: 2.5rem;
-    border-radius: 18px;
-    color: white;
-    margin-bottom: 1.5rem;
+/* Page headings */
+h1 {
+    color: #142C43 !important;
+    font-size: 2rem !important;
+    font-weight: 750 !important;
+    line-height: 1.3 !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.6rem !important;
 }
 
-.ciq-hero h1 {
+/* =====================================
+   FIX SIDEBAR LOGOUT BUTTON
+===================================== */
+
+/* Logout button styling */
+[data-testid="stSidebar"] .stButton > button {
+    background-color: #087F8C !important;
     color: white !important;
-    font-size: 2.5rem !important;
-    margin-bottom: 0.5rem;
+    border: 1px solid #087F8C !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    min-height: 40px !important;
+    transition: all 0.2s ease;
 }
 
-.ciq-hero p {
-    color: #D8E8EC;
-    font-size: 1.05rem;
-    max-width: 700px;
+/* Logout button hover */
+[data-testid="stSidebar"] .stButton > button:hover {
+    background-color: #066A75 !important;
+    border-color: #066A75 !important;
+    color: white !important;
 }
 
-.ciq-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.25rem;
-    height: 100%;
-    box-shadow: 0 2px 8px rgba(16, 40, 61, 0.035);
+/* Ensure all text inside logout button is visible */
+[data-testid="stSidebar"] .stButton > button p {
+    color: white !important;
 }
 
-.ciq-card h3 {
-    margin-top: 0;
-    color: var(--navy) !important;
+/* =====================================
+   SIDEBAR SPACING
+===================================== */
+
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    gap: 0.7rem;
 }
 
-.ciq-card p {
-    color: var(--muted);
-    line-height: 1.6;
+[data-testid="stMainBlockContainer"] > div:first-child {
+    padding-top: 1rem !important;
 }
 
-.ciq-section-label {
-    color: var(--muted);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
+/* Add Patient Dialog */
+div[data-testid="stDialog"] > div {
+    width: 90vw !important;
+    max-width: 950px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    margin: auto !important;
 }
 
-.ciq-risk-high {
-    color: var(--red);
-    background: #FCECEC;
-    border-radius: 8px;
-    padding: 5px 10px;
-    font-weight: 700;
+/* Center dialog content */
+div[data-testid="stDialog"] [data-testid="stVerticalBlock"] {
+    gap: 0.5rem !important;
 }
 
-.ciq-risk-moderate {
-    color: var(--orange);
-    background: #FFF4E3;
-    border-radius: 8px;
-    padding: 5px 10px;
-    font-weight: 700;
+/* Compact form container */
+div[data-testid="stDialog"] [data-testid="stForm"] {
+    max-width: 720px !important;
+    margin: 0 auto !important;
+    padding: 16px !important;
 }
 
-.ciq-risk-low {
-    color: var(--green);
-    background: #E8F5EE;
-    border-radius: 8px;
-    padding: 5px 10px;
-    font-weight: 700;
+/* Compact inputs */
+div[data-testid="stDialog"] input,
+div[data-testid="stDialog"] [data-baseweb="select"] {
+    min-height: 42px !important;
 }
 
-/* Login page */
-
-.ciq-login-wrap {
-    max-width: 520px;
-    margin: 2rem auto;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 2rem;
-    box-shadow: 0 8px 30px rgba(16, 40, 61, 0.07);
+/* Compact labels */
+div[data-testid="stDialog"] label {
+    margin-bottom: 2px !important;
 }
 
-@media (max-width: 768px) {
-    .main .block-container {
-        padding: 1.2rem 1rem 2rem;
-    }
-
-    .ciq-hero {
-        padding: 1.5rem;
-    }
-
-    .ciq-hero h1 {
-        font-size: 2rem !important;
-    }
+/* Save button */
+div[data-testid="stDialog"] .stFormSubmitButton button {
+    width: 100%;
+    min-height: 40px;
 }

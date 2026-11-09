@@ -7,7 +7,7 @@ import pandas as pd
 from core.config import get_secret
 
 # Check https://console.groq.com/docs/models for current model IDs (the catalog changes often).
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+DEFAULT_MODEL = "openai/gpt-oss-120b"
 
 SYSTEM = (
     "You are a clinical decision-support assistant writing a brief summary for a cardiologist. "
