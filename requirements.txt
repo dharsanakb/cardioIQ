@@ -6,5 +6,5 @@ shap==0.53.0
 plotly==7.1.0
 sqlalchemy==2.1.4
 psycopg2-binary>=2.9
-grok
+groq
 joblib==1.5.3
