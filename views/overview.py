@@ -41,6 +41,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
 # PAGE HEADER
 
 st.title("Patient Overview")
@@ -55,13 +56,11 @@ if msg := st.session_state.pop("flash", None):
 
 # ADD PATIENT DIALOG
 
-
 @st.dialog("Add New Patient", width="large")
 def add_patient_dialog():
 
     st.markdown("""
     <style>
-    /* Compact dialog dimensions */
     [data-testid="stDialog"] [role="dialog"] {
         width: min(850px, 92vw) !important;
         max-width: 850px !important;
@@ -70,12 +69,10 @@ def add_patient_dialog():
         border-radius: 14px !important;
     }
 
-    /* Reduce dialog content spacing */
     [data-testid="stDialog"] [data-testid="stVerticalBlock"] {
         gap: 0.45rem !important;
     }
 
-    /* Remove unnecessary inner card styling */
     [data-testid="stDialog"] [data-testid="stVerticalBlockBorderWrapper"] {
         border: none !important;
         box-shadow: none !important;
@@ -83,17 +80,14 @@ def add_patient_dialog():
         background: transparent !important;
     }
 
-    /* Compact labels */
     [data-testid="stDialog"] label {
         font-size: 0.88rem !important;
     }
 
-    /* Compact inputs */
     [data-testid="stDialog"] input {
         min-height: 38px !important;
     }
 
-    /* Save button */
     [data-testid="stDialog"] .stFormSubmitButton button {
         background: #087F8C !important;
         color: white !important;
@@ -203,10 +197,10 @@ def add_patient_dialog():
         st.rerun()
 
 
-
 # LOAD PATIENT DATA
 
 df = service.overview_table()
+
 
 # TOP-LEVEL METRICS
 
@@ -227,21 +221,14 @@ needs_review = int(
 m1, m2, m3, m4 = st.columns(4)
 
 m1.metric("Total patients", total)
-
 m2.metric("High risk", high)
-
 m3.metric("Open alerts", open_alerts)
-
 m4.metric("Needs review", needs_review)
 
 
-# ============================================================
 # SEARCH AND FILTERS
-# ============================================================
 
-left, middle, right = st.columns(
-    [3, 1.5, 1.5]
-)
+left, middle, right = st.columns([3, 1.5, 1.5])
 
 query = left.text_input(
     "Search patients",
@@ -261,9 +248,7 @@ statuses = right.multiselect(
 )
 
 
-# ============================================================
 # ADD PATIENT ACTION
-# ============================================================
 
 _, action_col = st.columns([5, 1])
 
@@ -277,9 +262,7 @@ with action_col:
         add_patient_dialog()
 
 
-# ============================================================
 # FILTER PATIENT RECORDS
-# ============================================================
 
 view = df.copy()
 
@@ -318,9 +301,7 @@ view = (
 )
 
 
-# ============================================================
 # PATIENT LIST
-# ============================================================
 
 st.subheader("Patient list")
 
@@ -338,7 +319,12 @@ if view.empty:
 
 else:
 
+    # --------------------------------------------------------
+    # PREPARE TABLE DATA
+    # --------------------------------------------------------
+
     table = view.assign(
+
         risk_pct=(
             view["risk_score"] * 100
         ).round(0),
@@ -352,13 +338,21 @@ else:
             .dt.strftime("%d %b %Y")
             .fillna("No reading")
         ),
+
+        # ADD COLOURED RISK INDICATOR
+        risk_display=view["risk_level"].map({
+            "High": "🔴 High",
+            "Moderate": "🟡 Moderate",
+            "Low": "🟢 Low"
+        }).fillna("⚪ Unknown")
+
     )[
         [
             "id",
             "name",
             "age",
             "risk_pct",
-            "risk_level",
+            "risk_display",
             "bp",
             "hr",
             "open_alerts",
@@ -368,6 +362,10 @@ else:
     ]
 
 
+    # --------------------------------------------------------
+    # DISPLAY PATIENT TABLE
+    # --------------------------------------------------------
+
     event = st.dataframe(
         table,
         hide_index=True,
@@ -375,6 +373,7 @@ else:
         on_select="rerun",
         selection_mode="single-row",
         key="patient_table",
+
         column_config={
 
             "id": st.column_config.NumberColumn(
@@ -399,8 +398,10 @@ else:
                 format="%d%%",
             ),
 
-            "risk_level": st.column_config.TextColumn(
+            # DISPLAY COLOURED CIRCLE BESIDE RISK LEVEL
+            "risk_display": st.column_config.TextColumn(
                 "Risk Level",
+                width="180",
             ),
 
             "bp": st.column_config.NumberColumn(
@@ -426,6 +427,7 @@ else:
             ),
         },
     )
+
 
     # --------------------------------------------------------
     # AUTOMATIC NAVIGATION ON ROW SELECTION
