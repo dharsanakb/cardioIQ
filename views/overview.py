@@ -452,3 +452,13 @@ else:
         st.switch_page(
             "views/patient.py"
         )
+
+import streamlit as st
+from core.db import get_patients
+
+st.download_button(
+    label="Download Patient Database (CSV)",
+    data=get_patients().to_csv(index=False).encode("utf-8"),
+    file_name="cloud_patients.csv",
+    mime="text/csv"
+)
