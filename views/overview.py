@@ -3,7 +3,6 @@ import streamlit as st
 
 from core import db, model, service
 
-from core.db import migrate_local_changes_to_cloud
 
 # PAGE SPACING AND STYLING
 
@@ -482,7 +481,7 @@ if st.button(
     disabled=not confirm_migration
 ):
     try:
-        result = migrate_local_changes_to_cloud()
+        result = db.migrate_local_changes_to_cloud()
 
         st.success("Migration completed successfully!")
 
