@@ -3,6 +3,7 @@ import streamlit as st
 
 from core import db, model, service
 
+from core.db import migrate_local_changes_to_cloud
 
 # PAGE SPACING AND STYLING
 
@@ -462,3 +463,34 @@ st.download_button(
     file_name="cloud_patients.csv",
     mime="text/csv"
 )
+
+
+st.divider()
+st.subheader("Database Migration")
+
+st.warning(
+    "One-time operation: Updates 27 patient genders "
+    "and adds 2 new patients."
+)
+
+confirm_migration = st.checkbox(
+    "I have verified the migration data and want to proceed."
+)
+
+if st.button(
+    "Run Database Migration",
+    disabled=not confirm_migration
+):
+    try:
+        result = migrate_local_changes_to_cloud()
+
+        st.success("Migration completed successfully!")
+
+        st.write(result)
+
+        st.cache_data.clear()
+
+        st.rerun()
+
+    except Exception as e:
+        st.error(f"Migration failed: {e}")
